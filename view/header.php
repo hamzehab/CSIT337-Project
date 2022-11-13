@@ -49,12 +49,30 @@
                 <form class="d-flex" method="POST">
                   <input name="search" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
                   <button class="btn btn-outline-light" type="submit">Search</button>
-                  &nbsp;
                 </form>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                </ul>
                 <ul class="navbar-nav">
+                  <?php if (!isset($_SESSION['$username'])){
+                    echo ('
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><i style="font-size: 1.5rem;" class="bi bi-cart"></i></a>
+                          <a href="#" class="nav-link" style="font-size: 1.2rem;">Login</a>
                     </li>
+                    <li class="nav-item">
+                          <a href="#" class="nav-link" style="font-size: 1.2rem;">Register</a>
+                    </li>'
+                    );}
+                    else{
+                      echo ('
+                      <li class="nav-item">
+                        <a href="#" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i></a>
+                      </li>
+                      ');}
+                  ?>
+                    
+                  <li class="nav-item">
+                      <a class="nav-link" href="#"><i style="font-size: 1.5rem;" class="bi bi-cart"></i></a>
+                  </li>
                 </ul>
               </div>
             </div>
