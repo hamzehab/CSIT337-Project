@@ -1,6 +1,6 @@
 <?php 
     require('./model/product_db.php');
-    $search = filter_input(INPUT_POST, 'search');
+    $search = htmlspecialchars(filter_input(INPUT_POST, 'search'));
     if ($search != ''){
         $products1 = search_product($search); ?>
 <!DOCTYPE html>
