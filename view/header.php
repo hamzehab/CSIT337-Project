@@ -1,4 +1,6 @@
 <?php
+    session_start();
+
     require('./model/db_connect.php'); 
     require('./model/category_db.php');
 ?>
@@ -53,19 +55,19 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
                 <ul class="navbar-nav">
-                  <?php if (!isset($_SESSION['$username'])){
+                  <?php if (!isset($_SESSION['email'])){
                     echo ('
                     <li class="nav-item">
-                          <a href="#" class="nav-link" style="font-size: 1.2rem;">Login</a>
+                          <a href="./Login/Login.php" class="nav-link" style="font-size: 1.2rem;">Login</a>
                     </li>
                     <li class="nav-item">
-                          <a href="#" class="nav-link" style="font-size: 1.2rem;">Register</a>
+                      <a href="./Login/Register.php" class="nav-link" style="font-size: 1.2rem;">Register</a>
                     </li>'
                     );}
                     else{
                       echo ('
                       <li class="nav-item">
-                        <a href="#" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i></a>
+                        <a href="./Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i>Logout</a>
                       </li>
                       ');}
                   ?>
