@@ -1,9 +1,4 @@
 <?php 
-    /*session_start();
-    if(!isset($_SESSION['username'])){
-        header("Location:Login.php");
-    }*/
-
     include('./view/header.php');
     include('./view/search.php');
 

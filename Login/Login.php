@@ -9,7 +9,7 @@
         else{
             $query = "SELECT * FROM customers WHERE emailAddress = :email AND password = :password";
             $statement = $db->prepare($query);
-            $statement->execute(array('email' => $email, 'password' => $password));
+            $statement->execute(array('email' => trim($email), 'password' => trim($password)));
             $user = $statement->fetch();
 
             $count = $statement->rowCount();
