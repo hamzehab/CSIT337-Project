@@ -2,26 +2,30 @@
     session_start();
     require('../model/db_connect.php');
     $login_error = '';
-    $email = htmlspecialchars(filter_input(INPUT_POST, 'email'));
+    $email = trim(htmlspecialchars(filter_input(INPUT_POST, 'email')));
     $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
     if(isset($_POST['login'])){
         if (empty($email) || empty($password)) $login_error = "All fields are required";
         else{
-            $query = "SELECT * FROM customers WHERE emailAddress = :email AND password = :password";
+            $query = "SELECT * FROM customers WHERE emailAddress = :email";
             $statement = $db->prepare($query);
-            $statement->execute(array('email' => trim($email), 'password' => trim($password)));
+            $statement->execute(array('email' => $email));
             $user = $statement->fetch();
-
             $count = $statement->rowCount();
+            $statement->closeCursor();
+
             if($count > 0){
-                $_SESSION['email'] = $email;
-                $_SESSION['customerID'] = $user['customerID'];
-                header('location: ../index.php');
+                if (password_verify($password, $user['password'])){
+                    $_SESSION['email'] = $email;
+                    $_SESSION['customerID'] = $user['customerID'];
+                    header('location: ../index.php');
+                }
+                else $login_error = "Email or Password is incorrect";
             }
             else{
                 $login_error = "Email or Password is incorrect";
             }
-        }
+        }  
     }
 ?>
 
@@ -42,7 +46,7 @@
             </div>
             <div class="border border-light p-3 rounded-5 row bg-dark">
                 <h4 class="p-3" style="color: white;">Login</h4>
-                <?php if(!empty($login_error) && isset($login_error)) echo '<div class="alert alert-danger">' . $login_error. '</div>'; ?>
+                <?php if(!empty($login_error) && isset($login_error)) echo '<div class="alert alert-danger p-3">' . $login_error. '</div>'; ?>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
                     <div class="form-floating mb-3">
                         <input class="form-control" name="email" type="email" placeholder="Email Address">

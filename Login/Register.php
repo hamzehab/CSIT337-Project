@@ -1,3 +1,38 @@
+<?php
+    session_start();
+    require('../model/db_connect.php');
+    $login_error = '';
+    $fName = trim(htmlspecialchars(filter_input(INPUT_POST, 'fName')));
+    $lName = trim(htmlspecialchars(filter_input(INPUT_POST, 'lName')));
+    $email = trim(htmlspecialchars(filter_input(INPUT_POST, 'email')));
+    $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
+    $confirmPassword = htmlspecialchars(filter_input(INPUT_POST, 'confirmPassword'));
+    $hash = password_hash($password, PASSWORD_DEFAULT);
+    if(isset($_POST['register'])){
+        if (empty($fName) || empty($lName) || empty($email) || empty($password) || empty($confirmPassword)) $login_error = "All fields are required";
+        else{
+            $query = "SELECT * FROM customers WHERE emailAddress = :email";
+            $statement = $db->prepare($query);
+            $statement->execute(array('email' => $email));
+            $count = $statement->rowCount();
+            $statement->closeCursor();
+
+            if($count > 0) $login_error = "Email Address already registered";
+            else{
+                $query = "INSERT INTO customers (emailAddress, password, firstName, lastName) 
+                            VALUES (:email, :password, :fName, :lName)";
+                $statement = $db->prepare($query);
+                $statement->execute(array('email' => $email, 'password' => $hash, 'fName' => $fName, 'lName' => $lName));
+                $statement->closeCursor();
+
+                $_SESSION['email'] = $email;
+                $_SESSION['customerID'] = $user['customerID'];
+                header('location: ../index.php');
+            }
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -15,14 +50,15 @@
             </div>
             <div class="border border-light p-3 rounded-5 row bg-dark">
                 <h4 class="p-3" style="color: white;">Register</h4>
-                <form action="" method="POST">
+                <?php if(!empty($login_error) && isset($login_error)) echo '<div class="alert alert-danger p-3">' . $login_error. '</div>'; ?>
+                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
                     <div class="form-floating mb-3">
                         <input type="text" name="fName" class="form-control" placeholder="First Name">
                         <label for="floatingInput">First Name</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="text" name="lName" class="form-control" placeholder="Last Name">
-                        <label for="lName">Last Name</label>
+                        <label for="floatingInput">Last Name</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input class="form-control" name="email" type="email" placeholder="Email Address">
@@ -30,14 +66,14 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" name="password" class="form-control" placeholder="Password">
-                        <label for="password">Password</label>
+                        <label for="floatingPassword">Password</label>
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" name="confirmPassword" class="form-control" placeholder="Confirm Password">
-                        <label for="confirmPassword">Confirm Password</label>
+                        <label for="floatingPassword">Confirm Password</label>
                     </div>
                     <div class="col text-center p-3">
-                        <button class="btn btn-light">&emsp;Register&emsp;</button><br><br>
+                        <button name="register" class="btn btn-light">&emsp;Register&emsp;</button><br><br>
                         <a class="link-light" href="./Login.php">Already have an account? Login here</a>
                     </div>
                 </form>

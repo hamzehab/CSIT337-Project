@@ -1,15 +1,13 @@
-DROP DATABASE IF EXISTS website;
-CREATE DATABASE website;
-USE website;
+DROP DATABASE IF EXISTS UnlimitedDrinks;
+CREATE DATABASE UnlimitedDrinks;
+USE UnlimitedDrinks;
 
 CREATE TABLE customers (
   customerID        INT            NOT NULL   AUTO_INCREMENT,
   emailAddress      VARCHAR(255)   NOT NULL,
   password          VARCHAR(60)    NOT NULL,
   firstName         VARCHAR(60)    NOT NULL,
-  lastName          VARCHAR(60)    NOT NULL,
-  shipAddressID     INT                       DEFAULT NULL,
-  billingAddressID  INT                       DEFAULT NULL,  
+  lastName          VARCHAR(60)    NOT NULL, 
   PRIMARY KEY (customerID),
   UNIQUE INDEX emailAddress (emailAddress)
 );
