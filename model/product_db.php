@@ -51,7 +51,10 @@
 
     function search_product($search){
         global $db;
-        $query = "SELECT * FROM products WHERE productName LIKE CONCAT('%', :search, '%')";
+        $query = "SELECT * FROM products p 
+                    LEFT JOIN categories c ON c.categoryID = p.categoryID 
+                    WHERE p.productName LIKE CONCAT('%', :search, '%') 
+                    OR c.categoryName = :search";
         $statement = $db->prepare($query);
         $statement->bindValue(":search", $search);
         $statement->execute();

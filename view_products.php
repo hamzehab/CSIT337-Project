@@ -35,7 +35,7 @@
                 <div class="row">
                     <?php foreach ($products as $product): 
                     echo '<div class="box col-lg-4 d-flex align-items-stretch mb-3">'; ?>
-                        <div class="card text-center border-dark">
+                        <div class="card text-center border-dark" style="width: 100%;">
                             <img src="<?php echo './images/' . $product['productCode'] . '.png' ?>" class="card-img-top" alt="">
                             <div class="card-body d-flex flex-column">
                                 <h5 class="card-title"><?php echo $product['productName']; ?></h5>

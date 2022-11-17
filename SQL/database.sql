@@ -79,15 +79,23 @@ CREATE TABLE administrators (
 );
 
 INSERT INTO categories (categoryName) VALUES
-    ('Coca-Cola'),
-    ('Fanta'),
-    ('Pepsi'),
-    ('Sprite');
+    ('Soda'),
+    ('Energy Drinks'),
+    ('Vitamin Water'),
+    ('Sparkling Water'),
+    ('Iced Tea');
 
-INSERT INTO products (`categoryID`, `productCode`, `productName`, `description`, `price`, `quantity`) VALUES
-('1', 'colaCh', 'Coca-Cola Cherry', 'Enjoy the crisp and refreshing taste of Coca-Cola with sweet, smooth cherry flavor.', '1.99', '100'),
-('1', 'colaV', 'Coca-Cola Vanilla', 'Enjoy the crisp and refreshing taste of Coca-Cola with a hint of vanilla.', '1.99', '100'),
-('1', 'colaChV', 'Coca-Cola Cherry Vanilla', 'The great taste of Coca-Cola + Cherry and Vanilla = UNBELIEVABLY DELICIOUS. Buy Cherry Vanilla online or find it near you today.', '1.99', '100');
+INSERT INTO products (`categoryID`, `productCode`, `productName`, `description`, `price`) VALUES
+('1', 'cola', 'Coca-Cola', 'Enjoy the crisp and refreshing taste of Coca-Cola Original.', '1.99'),
+('1', 'colaCh', 'Coca-Cola Cherry', 'Enjoy the crisp and refreshing taste of Coca-Cola with sweet, smooth cherry flavor.', '2.99'),
+('1', 'colaV', 'Coca-Cola Vanilla', 'Enjoy the crisp and refreshing taste of Coca-Cola with a hint of vanilla.', '2.99'),
+('1', 'colaChV', 'Coca-Cola Cherry Vanilla', 'The great taste of Coca-Cola + Cherry and Vanilla = UNBELIEVABLY DELICIOUS. Buy Cherry Vanilla online or find it near you today.', '2.99'),
+('1', 'sprite', 'Sprite', "The OG, the flavor that started it all—classic, cool, crisp lemon-lime taste that’s caffeine free with 100% natural flavors.", '1.99'),
+('1', 'spriteZ', 'Sprite Zero Sugar', "Who says you can’t do more with less? The iconic great taste of Sprite with zero sugar.", '2.49'),
+('1', 'fantaS', 'Fanta Strawberry', "It's a low key chill spontaneous strawberry hang under the radar flavor make the most of every vaporwave daydream thing.", '2.99'),
+('1', 'fanta', 'Fanta', "It's a classic iconic flavor inspiration in a bottle passion for life share every moment because embracing what makes you unique makes you cool thing.", '1.99'),
+('1', 'gingerale', 'Ginger Ale', "Made with the crisp, refreshing ginger taste you've always loved, Canda Dry Dinger Ale is an unparalleled classic.", '1.99');
+
 
 
 CREATE USER IF NOT EXISTS mgs_user@localhost 
