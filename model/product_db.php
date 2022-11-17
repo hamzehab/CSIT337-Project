@@ -62,4 +62,15 @@
         $statement->closeCursor();
         return $products;
     }
+
+    function random_products(){
+        global $db;
+        $query = "SELECT * FROM products ORDER by rand() limit 3";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $random = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $random;
+    }
 ?>

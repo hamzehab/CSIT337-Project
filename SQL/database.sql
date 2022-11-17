@@ -56,8 +56,8 @@ CREATE TABLE products (
   productCode       VARCHAR(10)    NOT NULL,
   productName       VARCHAR(255)   NOT NULL,
   description       TEXT           NOT NULL,
-  price         DECIMAL(10,2)  NOT NULL,
-  quantity          INT            NOT NULL,
+  price             DECIMAL(10,2)  NOT NULL,
+  date_added        datetime DEFAULT CURRENT_TIMESTAMP NOT NULL,
   PRIMARY KEY (productID), 
   INDEX categoryID (categoryID), 
   UNIQUE INDEX productCode (productCode)
