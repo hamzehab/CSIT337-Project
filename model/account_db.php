@@ -1,5 +1,37 @@
 <?php
-    function login(){
+
+    function login_admin(){
+        global $db;
+        $login_error = '';
+        $email = trim(htmlspecialchars(filter_input(INPUT_POST, 'email')));
+        $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
+
+        if (empty($email) || empty($password)) $login_error = "All fields are required";
+        else{
+            $query = "SELECT * FROM administrators WHERE emailAddress = :email";
+            $statement = $db->prepare($query);
+            $statement->execute(array('email' => $email));
+            $user = $statement->fetch();
+            $count = $statement->rowCount();
+            $statement->closeCursor();
+
+            if($count > 0){
+                if (password_verify($password, $user['password'])){
+                    $_SESSION['email'] = $email;
+                    $_SESSION['adminID'] = $user['adminID'];
+                    header('location: index.php');
+                }
+                else $login_error = "Email or Password is incorrect";
+            }
+            else{
+                $login_error = "Email or Password is incorrect";
+            }
+        }
+        
+        return $login_error;
+    }
+
+    function login_customer(){
         global $db;
         $login_error = '';
         $email = trim(htmlspecialchars(filter_input(INPUT_POST, 'email')));

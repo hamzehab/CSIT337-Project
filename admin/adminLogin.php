@@ -2,10 +2,10 @@
     session_start();
     require('../model/db_connect.php');
     include('../model/account_db.php');
-    
-    if(isset($_POST['login'])) $login_error = login_customer();
 
-    if (isset($_SESSION['customerID'])) header('location: ../index.php');
+    if(isset($_POST['login'])) $login_error = login_admin();
+
+    if(isset($_SESSION['adminID'])) header('location: index.php');
     else{
 ?>
 
@@ -22,7 +22,7 @@
         <div class="container mt-3">
             <a href="../index.php" class="mt-3"><i class="bi bi-arrow-return-left"></i>Back to Homepage</a>
             <div class="text-center pb-5">
-                <h1>Login to Unlimited Drinks</h1>
+                <h1>Admin Login to Unlimited Drinks</h1>
             </div>
             <div class="border border-light p-3 rounded-5 row bg-dark">
                 <h4 class="p-3" style="color: white;">Login</h4>
@@ -38,8 +38,7 @@
                     </div>
                     <div class="col text-center p-3">
                         <button name="login" class="btn btn-light">&emsp;Login&emsp;</button><br><br>
-                        <a class="link-light" href="./Register.php">Don't have an account? Register here</a><br><br>
-                        <a class="link-light" href="../admin/adminLogin.php">Admin Login</a>
+                        <a class="link-light" href="../Login/Login.php">Customer Login</a>
                     </div>
                 </form>
             </div>

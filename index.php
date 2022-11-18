@@ -1,6 +1,7 @@
 <?php 
-    include('./view/header.php');
+    include_once('./view/header.php');
     include('./view/search.php');
+
     $products = random_products();
 ?>
 
@@ -76,3 +77,5 @@
                 </div> 
     </body>
 </html>
+
+<?php include('./view/footer.php');?>
