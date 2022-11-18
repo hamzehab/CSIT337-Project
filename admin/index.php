@@ -80,7 +80,7 @@
                         <?php if (isset($_SESSION['email'])){
                             echo ('
                             <li class="nav-item">
-                                <a href="./Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i>Logout</a>
+                                <a href="../Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i>Logout</a>
                             </li>
                             ');}
                         ?>
