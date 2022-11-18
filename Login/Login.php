@@ -1,32 +1,10 @@
 <?php
     session_start();
     require('../model/db_connect.php');
-    $login_error = '';
-    $email = trim(htmlspecialchars(filter_input(INPUT_POST, 'email')));
-    $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
-    if(isset($_POST['login'])){
-        if (empty($email) || empty($password)) $login_error = "All fields are required";
-        else{
-            $query = "SELECT * FROM customers WHERE emailAddress = :email";
-            $statement = $db->prepare($query);
-            $statement->execute(array('email' => $email));
-            $user = $statement->fetch();
-            $count = $statement->rowCount();
-            $statement->closeCursor();
+    include('../model/account_db.php');
+    
+    if(isset($_POST['login'])) $login_error = login();
 
-            if($count > 0){
-                if (password_verify($password, $user['password'])){
-                    $_SESSION['email'] = $email;
-                    $_SESSION['customerID'] = $user['customerID'];
-                    header('location: ../index.php');
-                }
-                else $login_error = "Email or Password is incorrect";
-            }
-            else{
-                $login_error = "Email or Password is incorrect";
-            }
-        }  
-    }
 ?>
 
 
@@ -54,7 +32,7 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" name="password" class="form-control" placeholder="Password">
-                        <label for="password">Password</label>
+                        <label for="floatingInput">Password</label>
                     </div>
                     <div class="col text-center p-3">
                         <button name="login" class="btn btn-light">&emsp;Login&emsp;</button><br><br>

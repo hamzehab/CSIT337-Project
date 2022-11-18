@@ -1,36 +1,9 @@
 <?php
     session_start();
     require('../model/db_connect.php');
-    $login_error = '';
-    $fName = trim(htmlspecialchars(filter_input(INPUT_POST, 'fName')));
-    $lName = trim(htmlspecialchars(filter_input(INPUT_POST, 'lName')));
-    $email = trim(htmlspecialchars(filter_input(INPUT_POST, 'email')));
-    $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
-    $confirmPassword = htmlspecialchars(filter_input(INPUT_POST, 'confirmPassword'));
-    $hash = password_hash($password, PASSWORD_DEFAULT);
-    if(isset($_POST['register'])){
-        if (empty($fName) || empty($lName) || empty($email) || empty($password) || empty($confirmPassword)) $login_error = "All fields are required";
-        else{
-            $query = "SELECT * FROM customers WHERE emailAddress = :email";
-            $statement = $db->prepare($query);
-            $statement->execute(array('email' => $email));
-            $count = $statement->rowCount();
-            $statement->closeCursor();
-
-            if($count > 0) $login_error = "Email Address already registered";
-            else{
-                $query = "INSERT INTO customers (emailAddress, password, firstName, lastName) 
-                            VALUES (:email, :password, :fName, :lName)";
-                $statement = $db->prepare($query);
-                $statement->execute(array('email' => $email, 'password' => $hash, 'fName' => $fName, 'lName' => $lName));
-                $statement->closeCursor();
-
-                $_SESSION['email'] = $email;
-                $_SESSION['customerID'] = $user['customerID'];
-                header('location: ../index.php');
-            }
-        }
-    }
+    include('../model/account_db.php');
+    
+    if(isset($_POST['register'])) $register_error = register();
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +23,7 @@
             </div>
             <div class="border border-light p-3 rounded-5 row bg-dark">
                 <h4 class="p-3" style="color: white;">Register</h4>
-                <?php if(!empty($login_error) && isset($login_error)) echo '<div class="alert alert-danger p-3">' . $login_error. '</div>'; ?>
+                <?php if(!empty($register_error) && isset($register_error)) echo '<div class="alert alert-danger p-3">' . $register_error. '</div>'; ?>
                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST" oninput='confirmPassword.setCustomValidity(confirmPassword.value != password.value ? "Passwords do not match." : "")'>
                     <div class="form-floating mb-3">
                         <input type="text" name="fName" class="form-control" placeholder="First Name">
