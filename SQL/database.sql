@@ -92,8 +92,8 @@ INSERT INTO products (`categoryID`, `productCode`, `productName`, `description`,
 ('1', 'sprite', 'Sprite', "The OG, the flavor that started it all—classic, cool, crisp lemon-lime taste that’s caffeine free with 100% natural flavors.", '1.99'),
 ('1', 'spriteZ', 'Sprite Zero Sugar', "Who says you can’t do more with less? The iconic great taste of Sprite with zero sugar.", '2.49'),
 ('1', 'fantaS', 'Fanta Strawberry', "It's a low key chill spontaneous strawberry hang under the radar flavor make the most of every vaporwave daydream thing.", '2.99'),
-('1', 'fanta', 'Fanta', "It's a classic iconic flavor inspiration in a bottle passion for life share every moment because embracing what makes you unique makes you cool thing.", '1.99'),
-('1', 'gingerale', 'Ginger Ale', "Made with the crisp, refreshing ginger taste you've always loved, Canda Dry Dinger Ale is an unparalleled classic.", '1.99');
+('1', 'fanta', 'Fanta Orange', "It's a classic iconic flavor inspiration in a bottle passion for life share every moment because embracing what makes you unique makes you cool thing.", '1.99'),
+('1', 'gingerale', 'Canada Dry Ginger Ale', "Made with the crisp, refreshing ginger taste you've always loved, Canda Dry Dinger Ale is an unparalleled classic.", '1.99');
 
 
 
