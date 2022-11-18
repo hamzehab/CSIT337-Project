@@ -75,7 +75,7 @@
                                                 <h5 class='card-title'>" . $product['productName'] . "</h5>
                                                 <p class='card-text'>" . $product['description']. "</p>
                                                 <h6 class='card-text mt-auto'> $". $product['price'] . "</h6>
-                                                <form action='addToCart.php' method='POST'>
+                                                <form action='./Cart/addToCart.php' method='POST'>
                                                     <input type='hidden' name='productID' value='" . $product['productID']. "'>
                                                     <button class='btn mt-auto btn-dark' value='Submit'>Add to Cart</a>
                                                 </form>
