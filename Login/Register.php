@@ -4,20 +4,17 @@
     include('../model/account_db.php');
     
     if(isset($_POST['register'])) $register_error = register();
+    if (isset($_SESSION['customerID'])) header('location: ../index.php');
 ?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    </head>
+    <?php include('../bootstrap.php'); ?>
+    <title>Register</title>
     <body style="background-color: #E8E8E8;">
         
         <div class="container mt-3">
-            <a href="../index.php" class="mt-3"><i class="bi bi-arrow-return-left"></i>Back to Homepage</a>
+            <a href="../index.php" class="btn btn-dark mt-3"><i class="bi bi-arrow-return-left"></i>Back to Homepage</a>
             <div class="text-center pb-5">
                 <h1>Registration Unlimited Drinks</h1>
             </div>
@@ -54,3 +51,5 @@
         </div>
     </body>
 </html>
+
+<?php include('../view/footer.php'); ?>

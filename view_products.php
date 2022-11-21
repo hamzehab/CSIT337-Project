@@ -13,7 +13,7 @@
 
 <!DOCTYPE html>
 <html>
-    <body>
+    <body style='background-color: lightgrey;'>
         <?php if (!isset($search) || $search == ''){ ?>
         <h3 class="m-3"><?php echo $category_name; ?></h1>
         <?php display_search($products);}?>

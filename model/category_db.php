@@ -21,4 +21,14 @@
         $category_name = $category['categoryName'];
         return $category_name;
     }
+
+    function add_category(){
+        global $db;
+        $category_id = trim(htmlspecialchars(filter_input(INPUT_POST, 'categoryID')));
+        $category_name = trim(htmlspecialchars(filter_input(INPUT_POST, 'categoryName')));
+        $query = 'INSERT INTO categories VALUES (:categoryID, :categoryName)';
+        $statement = $db->prepare($query);
+        $statement->execute(array('categoryID' => $category_id, 'categoryName' => $category_name));
+        $statement->closeCursor();
+    }
 ?>

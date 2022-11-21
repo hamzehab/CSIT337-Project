@@ -21,7 +21,7 @@
             ?>
         </title>
     </head>
-    <body>
+    <body style='background-color: lightgrey;'>
         <?php
             if ($search != ''){
                 $products = search_product($search);  

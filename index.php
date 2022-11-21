@@ -31,7 +31,7 @@
             }
         </style>
     </head>
-    <body>
+    <body style="background-color: lightgrey;">
         <?php 
             if (!isset($search) || $search == ''){ ?>
                 <div class="container p-4">

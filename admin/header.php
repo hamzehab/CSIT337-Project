@@ -1,13 +1,11 @@
+<?php
+    session_start();
+    if(isset($_SESSION['adminID'])){
+?>
 
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    </head>
-    
+    <?php include('../bootstrap.php'); ?>
     <body>
         <header>
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -29,10 +27,10 @@
                             Manager
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" aria-current="page" href="">Product Manager</a></li>
-                                <li class="nav-item"><a class="dropdown-item" aria-current="page" href="index.php">Category Manager</a></li>
-                                <li class="nav-item"><a class="dropdown-item" aria-current="page" href="index.php">User Manager</a></li>
-                                <li class="nav-item"><a class="dropdown-item" aria-current="page" href="index.php">Order Manager</a></li>
+                                <li><a class="dropdown-item" aria-current="page" href="productManager.php">Product Manager</a></li>
+                                <li class="nav-item"><a class="dropdown-item" aria-current="page" href="categoryManager.php">Category Manager</a></li>
+                                <li class="nav-item"><a class="dropdown-item" aria-current="page" href="userManager.php">User Manager</a></li>
+                                <li class="nav-item"><a class="dropdown-item" aria-current="page" href="orderManager.php">Order Manager</a></li>
                             </ul>
                         </li>
                         </ul>
@@ -51,3 +49,8 @@
         </header>
     </body>
 </html>
+
+<?php 
+    } 
+    else include('adminCheck.php');
+?>

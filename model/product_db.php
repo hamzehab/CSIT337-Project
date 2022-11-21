@@ -99,4 +99,14 @@
 
         return $random;
     }
+
+    function display_products(){
+        global $db;
+        $query = "SELECT * FROM products ORDER BY productID";
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $products = $statement->fetchAll();
+        $statement->closeCursor();
+        return $products;
+    }
 ?>
