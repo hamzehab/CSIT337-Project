@@ -35,7 +35,7 @@
                 <?php foreach ($products as $product): ?>
                     <tr>
                         <td><?php echo $product['productID']; ?></td>
-                        <td><?php echo $product['categoryID']; ?></td>
+                        <td><?php echo get_category_name($product['categoryID']); ?></td>
                         <td><?php echo $product['productCode']; ?></td>
                         <td><?php echo $product['productName']; ?></td>
                         <td><?php echo $product['description']; ?></td>
@@ -63,9 +63,9 @@
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
-                                                    <label class="col-sm-2 col-form-label">categoryID:</label>
+                                                    <label class="col-sm-2 col-form-label">Category Name:</label>
                                                     <div class="col-sm-10">
-                                                        <input type="number" class="form-control" value="<?php echo $product['categoryID'];?>" disabled>
+                                                        <input type="text" class="form-control" value="<?php echo get_category_name($product['categoryID']); ?>" disabled>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
