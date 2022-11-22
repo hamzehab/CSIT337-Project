@@ -35,7 +35,7 @@
         <?php 
             if (!isset($search) || $search == ''){ ?>
                 <div class="container p-4">
-                    <div id="carouselExampleIndicators" class="carousel carousel-dark slide" data-bs-ride="true">
+                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade carousel-dark" data-bs-ride="true">
                         <div class="carousel-indicators">
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
