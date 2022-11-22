@@ -77,6 +77,8 @@ CREATE TABLE administrators (
   PRIMARY KEY (adminID)
 );
 
+INSERT INTO administrators (adminID, emailAddress, password, firstName, lastName) VALUES
+('1', 'admin@gmail.com', '$2y$10$pXjF/lSUKk1Ur7Apfk72uucKCY1dcVmMLilT/zzErcsVwwFB47UYW', 'admin', 'owner');
 INSERT INTO categories (categoryName) VALUES
     ('Soda'),
     ('Energy Drinks'),

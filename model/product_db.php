@@ -34,18 +34,29 @@
         $statement->closeCursor();
     }
 
-    function add_product($category_id, $code, $name, $price) {
+    function edit_product($product_id, $productName, $description, $price){
+        global $db;
+        $query = 'UPDATE products 
+                SET productName = :productName, description = :description, price = :price
+                WHERE productID = :product_id';
+        $statement = $db->prepare($query);
+        $statement->execute(array('product_id' => $product_id, 'productName' => $productName, 'description' => $description, 'price' => $price));
+        $statement->closeCursor();
+    }
+
+    function add_product($category_id, $productCode, $productName, $price, $description) {
         global $db;
         $query = 'INSERT INTO products
-                    (categoryID, productCode, productName, listPrice)
+                    (categoryID, productCode, productName, description, price)
                 VALUES
-                    (:category_id, :code, :name, :price)';
+                    (:category_id, :productCode, :productName, :description, :price)';
         $statement = $db->prepare($query);
-        $statement->bindValue(':category_id', $category_id);
-        $statement->bindValue(':code', $code);
-        $statement->bindValue(':name', $name);
-        $statement->bindValue(':price', $price);
-        $statement->execute();
+        $statement->execute(array(
+                    'category_id' => $category_id, 
+                    'productCode' => $productCode,
+                    'productName' => $productName,
+                    'price' => $price,
+                    'description' => $description));
         $statement->closeCursor();
     }
 
@@ -109,4 +120,5 @@
         $statement->closeCursor();
         return $products;
     }
+    
 ?>

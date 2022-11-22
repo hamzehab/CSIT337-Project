@@ -22,13 +22,19 @@
         return $category_name;
     }
 
-    function add_category(){
+    function add_category($categoryName){
         global $db;
-        $category_id = trim(htmlspecialchars(filter_input(INPUT_POST, 'categoryID')));
-        $category_name = trim(htmlspecialchars(filter_input(INPUT_POST, 'categoryName')));
-        $query = 'INSERT INTO categories VALUES (:categoryID, :categoryName)';
+        $query = 'INSERT INTO categories (categoryName) VALUES (:categoryName)';
         $statement = $db->prepare($query);
-        $statement->execute(array('categoryID' => $category_id, 'categoryName' => $category_name));
+        $statement->execute(array('categoryName' => $categoryName));
+        $statement->closeCursor();
+    }
+
+    function edit_category($category_id, $categoryName){
+        global $db;
+        $query = "UPDATE categories SET categoryName = :categoryName WHERE categoryID = :category_id";
+        $statement = $db->prepare($query);
+        $statement->execute(array('categoryName' => $categoryName, 'category_id' => $category_id));
         $statement->closeCursor();
     }
 ?>
