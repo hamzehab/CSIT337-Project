@@ -36,13 +36,11 @@
                         <?php endforeach; ?>
                     </ul>
                   </li>
-                  <?php
-                    if(isset($_SESSION['adminID'])){
-                      echo '<li class="nav-item">
-                      <a class="nav-link active" href="./admin/index.php">Admin View</a>
-                    </li>';
-                    }
-                  ?>
+                  <?php if(isset($_SESSION['adminID'])){ ?>
+                      <li class="nav-item">
+                        <a class="nav-link active" href="./admin/index.php">Admin View</a>
+                      </li>;
+                  <?php } ?>
                 </ul>
                 <form class="d-flex" method="POST">
                   <input name="search" class="form-control me-2" type="text" placeholder="Search" aria-label="Search">
@@ -51,25 +49,24 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
                 <ul class="navbar-nav">
-                  <?php if (!isset($_SESSION['email'])){
-                    echo ('
+                  <?php if (!isset($_SESSION['email'])){ ?>
                     <li class="nav-item">
                           <a href="./Login/Login.php" class="nav-link" style="font-size: 1.2rem;">Login</a>
                     </li>
                     <li class="nav-item">
                       <a href="./Login/Register.php" class="nav-link" style="font-size: 1.2rem;">Register</a>
-                    </li>'
-                    );}
-                    else{
-                      echo ('
+                    </li>
+                    <?php } else { ?>
                       <li class="nav-item">
                         <a href="./Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i>Logout</a>
                       </li>
-                      ');}
-                  ?>
+                    <?php } ?>
                     
                   <li class="nav-item">
-                      <a class="nav-link" href="#"><i style="font-size: 1.5rem;" class="bi bi-cart"></i></a>
+                      <form action="./Cart/actions.php" method="POST">
+                        <input type="hidden" name="action" value="view_cart">               
+                        <button style="font-size: 1.5rem;" class="nav-link bi bi-cart btn btn-dark"></button>
+                      </form> 
                   </li>
                 </ul>
               </div>
