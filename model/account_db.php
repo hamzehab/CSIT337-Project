@@ -97,4 +97,17 @@
 
         return $register_error;
     }
+
+    function user_info($customerID){
+        global $db;
+        $query = 'SELECT * FROM customers WHERE customerID = :customerID';
+        $statement = $db->prepare($query);
+        $statement->execute(array('customerID' => $customerID));
+        $user = $statement->fetch();
+        $statement->closeCursor();
+
+        return $user;
+    }
+
+    function change_password(){}
 ?>

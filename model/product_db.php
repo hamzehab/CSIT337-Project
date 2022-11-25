@@ -89,7 +89,7 @@
                                         <form action='./Cart/actions.php' method='POST'>
                                             <input type='hidden' name='action' value='addToCart'>
                                             <input type='hidden' name='product_id' value='<?php echo $product['productID']; ?>'>
-                                            <?php if(isset($_SESSION['customerID'])) {?>
+                                            <?php if(!isset($_SESSION['adminID'])) {?>
                                             <button class='btn mt-auto btn-dark' value='Submit'>Add to Cart</a>
                                             <?php } ?>
                                         </form>

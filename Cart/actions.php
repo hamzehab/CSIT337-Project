@@ -2,6 +2,7 @@
     session_start();
     require('../model/db_connect.php');
     require('../model/product_db.php');
+    require('../model/order.php');
     
     
     $action = filter_input(INPUT_POST, 'action');
@@ -25,7 +26,8 @@
                 $product = get_product($product_id);
                 if (!isset($_SESSION['cart'])) $_SESSION['cart'] = array();
                 if (isset($_SESSION['cart'][$product_id])){
-                    $_SESSION['cart'][$product_id]['quantity']++;
+                    if($_SESSION['cart'][$product_id]['quantity'] <= 24) 
+                        $_SESSION['cart'][$product_id]['quantity']++;
                 }
                 else{
                     $item['productID'] = $product_id;
@@ -117,12 +119,25 @@
             $city = trim(htmlspecialchars(filter_input(INPUT_POST, 'city')));
             $state = trim(htmlspecialchars(filter_input(INPUT_POST, 'state')));
             $zipCode = trim(htmlspecialchars(filter_input(INPUT_POST, 'zipCode')));
-            if ($street == NULL || $street == FALSE || $city == NULL || $city == FALSE || $state == NULL || $state == FALSE || $zipCode == NULL || $zipCode == FALSE){
+
+            $taxAmount = filter_input(INPUT_POST, 'taxAmount');
+            $totalPrice = filter_input(INPUT_POST, 'totalPrice');
+
+            if ($street == NULL || $street == FALSE || $city == NULL || $city == FALSE || $state == NULL || $state == FALSE || 
+                $zipCode == NULL || $zipCode == FALSE || $taxAmount == NULL || $taxAmount == FALSE || $totalPrice == NULL || $totalPrice == FALSE){
                 $error_message = "Product not found.";
                 include('../bootstrap.php');
                 echo "<title>Error</title>";
                 echo "<div class='container text-center p-3'><h1>Something went wrong! Product not found.</h1>";
                 echo "<a class='btn btn-dark m-3' href='../index.php'>Go Back</a></div>";
+            }
+            else{
+                if(isset($street2)) $shipAddress = "$street $street2, $city $state $zipCode";
+                else $shipAddress = "$street, $city $state $zipCode";
+                $customerID = $_SESSION['customerID'];
+                place_order($customerID, $taxAmount, $totalPrice, $shipAddress);
+                unset($_SESSION['cart']);
+                header('location: confirmation.php');
             }
             break;
     }

@@ -30,11 +30,9 @@ CREATE TABLE orders (
   orderID           INT            NOT NULL   AUTO_INCREMENT,
   customerID        INT            NOT NULL,
   orderDate         DATETIME       NOT NULL,
-  shipAmount        DECIMAL(10,2)  NOT NULL,
   taxAmount         DECIMAL(10,2)  NOT NULL,
-  shipDate          DATETIME                  DEFAULT NULL,
-  shipAddressID     INT            NOT NULL,
-  billingAddressID  INT            NOT NULL,
+  totalPrice        DECIMAL(10,2)  NOT NULL, 
+  shipAddress       VARCHAR(255)   NOT NULL,
   PRIMARY KEY (orderID), 
   INDEX customerID (customerID)
 );
@@ -79,6 +77,10 @@ CREATE TABLE administrators (
 
 INSERT INTO administrators (adminID, emailAddress, password, firstName, lastName) VALUES
 ('1', 'admin@gmail.com', '$2y$10$pXjF/lSUKk1Ur7Apfk72uucKCY1dcVmMLilT/zzErcsVwwFB47UYW', 'admin', 'owner');
+
+INSERT INTO customers (customerID, emailAddress, password, firstName, lastName) VALUES
+('1', 'test@test.com', '$2y$10$pXjF/lSUKk1Ur7Apfk72uucKCY1dcVmMLilT/zzErcsVwwFB47UYW', 'Test', 'Tester');
+
 INSERT INTO categories (categoryName) VALUES
     ('Soda'),
     ('Energy Drinks'),
