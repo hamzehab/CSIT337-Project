@@ -74,32 +74,34 @@
         return $products;
     }
 
-    function display_search($products){
-        echo "<div class='container-fluid content-row p-4 col d-flex justify-content-center'>
-                <div class='col-md-10'>
-                    <div class='row'>";
-                        foreach ($products as $product):
-                            echo "<div class='box col-lg-4 d-flex align-items-stretch mb-3'>
-                                    <div class='card text-center border-dark' style='width: 100%;'>
-                                        <img src='./images/" . $product['productCode'] . ".png' class='card-img-top' alt=''>
-                                            <div class='card-body d-flex flex-column'>
-                                                <h5 class='card-title'>" . $product['productName'] . "</h5>
-                                                <p class='card-text'>" . $product['description']. "</p>
-                                                <h6 class='card-text mt-auto'> $". $product['price'] . "</h6>
-                                                <form action='./Cart/actions.php' method='POST'>
-                                                    <input type='hidden' name='action' value='addToCart'>
-                                                    <input type='hidden' name='product_id' value='" . $product['productID']. "'>
-                                                    <button class='btn mt-auto btn-dark' value='Submit'>Add to Cart</a>
-                                                </form>
-                                            </div>
+    function display_search($products){ ?>
+        <div class='container-fluid content-row p-4 col d-flex justify-content-center'>
+            <div class='col-md-10'>
+                <div class='row'>
+                    <?php foreach ($products as $product): ?>
+                        <div class='box col-lg-4 d-flex align-items-stretch mb-3'>
+                            <div class='card text-center border-dark' style='width: 100%;'>
+                                <img src='./images/<?php echo $product['productCode']; ?>.png' class='card-img-top' alt=''>
+                                    <div class='card-body d-flex flex-column'>
+                                        <h5 class='card-title'><?php echo $product['productName']; ?></h5>
+                                        <p class='card-text'><?php echo $product['description']; ?></p>
+                                        <h6 class='card-text mt-auto'> $<?php echo $product['price']; ?></h6>
+                                        <form action='./Cart/actions.php' method='POST'>
+                                            <input type='hidden' name='action' value='addToCart'>
+                                            <input type='hidden' name='product_id' value='<?php echo $product['productID']; ?>'>
+                                            <?php if(isset($_SESSION['customerID'])) {?>
+                                            <button class='btn mt-auto btn-dark' value='Submit'>Add to Cart</a>
+                                            <?php } ?>
+                                        </form>
                                     </div>
-                                  </div>"; 
-                        endforeach; 
-        echo "      </div>
+                            </div>
+                        </div> 
+                        <?php endforeach;?>
+                  </div>
                 </div>
-              </div>";
+              </div>
 
-    }
+    <?php }
 
     function random_products(){
         global $db;

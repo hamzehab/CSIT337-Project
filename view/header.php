@@ -61,13 +61,15 @@
                         <a href="./Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i>Logout</a>
                       </li>
                     <?php } ?>
-                    
+                  
+                  <?php if (isset($_SESSION['customerID'])){ ?>
                   <li class="nav-item">
                       <form action="./Cart/actions.php" method="POST">
                         <input type="hidden" name="action" value="view_cart">               
                         <button style="font-size: 1.5rem;" class="nav-link bi bi-cart btn btn-dark"></button>
                       </form> 
                   </li>
+                  <?php } ?>
                 </ul>
               </div>
             </div>
