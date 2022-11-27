@@ -51,8 +51,13 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 </ul>
                 <ul class="navbar-nav">
+                    <?php if(isset($_SESSION['customerID'])){ ?>
+                        <li class="nav-item mx-3">
+                            <a href="../customer/view_account.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-person-circle"></i></a>
+                        </li>
+                    <?php } ?>
                     <li class="nav-item">
-                        <button class="btn btn-dark"><a href="../Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i>Logout</a></button>
+                        <a href="../Login/Logout.php" class="nav-link btn btn-dark"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i></a>
                     </li>
                 </ul>
               </div>
@@ -92,7 +97,7 @@
 
                             <div class="row mb-4 d-flex justify-content-between align-items-center">
                                 <div class="col-md-2 col-lg-2 col-xl-2">
-                                    <img src= <?php echo "../images/" . $product['productCode'] . ".png"; ?> class="img-fluid rounded-3" alt="Coca-cola">
+                                    <img src= <?php echo "../images/" . $product['productCode'] . ".png"; ?> class="img-fluid rounded-3" alt="<?php echo $product['productName']; ?>">
                                 </div>
                                 <div class="col-md-3 col-lg-3 col-xl-3">
                                     <h6 class="text-muted"><?php echo get_category_name($product['categoryID']); ?></h6>
@@ -165,11 +170,16 @@
                             <div class="d-flex justify-content-between mb-4">
                                 <h5>
                                     <?php 
-                                    if (isset($_SESSION['cart'])){ 
-                                        echo count($_SESSION['cart']);
-                                        if(count($_SESSION['cart']) == 1) echo " item";
+                                    if (isset($_SESSION['cart'])){
+                                        $numOfItems = 0; 
+                                        foreach ($_SESSION['cart'] as $product):
+                                            $numOfItems += $product['quantity'];
+                                        endforeach;
+                                        echo $numOfItems;
+                                        if($numOfItems == 1) echo " item";
                                         else echo " items";
                                     }
+                                    else echo "0 items";
                                     ?>
                                 </h5>
                                 <h5>$<?php echo number_format($total, 2, '.'); ?></h5>

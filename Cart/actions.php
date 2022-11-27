@@ -15,10 +15,10 @@
         case 'addToCart':
             $product_id = filter_input(INPUT_POST, 'product_id', FILTER_VALIDATE_INT);
             if ($product_id == NULL || $product_id == FALSE){
-                $error_message = "Product not found.";
+                $error_message = "Something went wrong! Product not found.";
                 include('../bootstrap.php');
                 echo "<title>Error</title>";
-                echo "<div class='container text-center p-3'><h1>Something went wrong! Product not found.</h1>";
+                echo "<div class='container text-center p-3'><h1>$error_message</h1>";
                 echo "<a class='btn btn-dark m-3' href='../index.php'>Go Back</a></div>";
             }
             else{
@@ -132,10 +132,19 @@
                 echo "<a class='btn btn-dark m-3' href='../index.php'>Go Back</a></div>";
             }
             else{
+                $customerID = $_SESSION['customerID'];
+    
                 if(isset($street2)) $shipAddress = "$street $street2, $city $state $zipCode";
                 else $shipAddress = "$street, $city $state $zipCode";
-                $customerID = $_SESSION['customerID'];
-                place_order($customerID, $taxAmount, $totalPrice, $shipAddress);
+                
+                $order['orderID'] = place_order($customerID, $taxAmount, $totalPrice, $shipAddress);
+                $orderID = $order['orderID'];
+
+                foreach ($_SESSION['cart'] as $product):
+                    orderItems($orderID['orderID'], $product['productID'], $product['price'], $product['quantity']);
+                endforeach;
+                
+
                 unset($_SESSION['cart']);
                 header('location: confirmation.php');
             }

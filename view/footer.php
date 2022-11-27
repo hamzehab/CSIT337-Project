@@ -16,8 +16,7 @@
 
             <!-- Copyright -->
             <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                &copy; 2022 Copyright:
-                <a class="text-white" href="./index.php">UnlimitedDrinks.com</a>
+                <p class="text-white">&copy; 2022 Copyright: UnlimitedDrinks.com</p>
             </div>
             <!-- Copyright -->
         </footer>

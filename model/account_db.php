@@ -109,5 +109,33 @@
         return $user;
     }
 
-    function change_password(){}
+    function change_firstName($firstName, $customerID){
+        global $db;
+        $query = "UPDATE customers
+                    SET firstName = :firstName
+                    WHERE customerID = :customerID";
+        $statement = $db->prepare($query);
+        $statement->execute(array('firstName' => $firstName, 'customerID' => $customerID));
+        $statement->closeCursor();
+    }
+
+    function change_lastName($lastName, $customerID){
+        global $db;
+        $query = "UPDATE customers
+                    SET lastName = :lastName
+                    WHERE customerID = :customerID";
+        $statement = $db->prepare($query);
+        $statement->execute(array('lastName' => $lastName, 'customerID' => $customerID));
+        $statement->closeCursor();
+    }
+
+    function change_password($password, $customerID){
+        global $db;
+        $query = 'UPDATE customers 
+                    SET password = :password 
+                    WHERE customerID = :customerID';
+        $statement = $db->prepare($query);
+        $statement->execute(array('password' => password_hash($password, PASSWORD_DEFAULT), 'customerID' => $customerID));
+        $statement->closeCursor();
+    }
 ?>

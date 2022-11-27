@@ -59,11 +59,11 @@
                     <?php } else { 
                       if (isset($_SESSION['customerID'])){ ?>
                         <li class="nav-item">
-                            <a href="./customer/view_account.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-person-circle"></i>Account</a>
+                            <a href="./customer/view_account.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-person-circle"></i></a>
                         </li>
                         <?php } ?>
-                      <li class="nav-item">
-                        <a href="./Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i>Logout</a>
+                      <li class="nav-item mx-3">
+                        <a href="./Login/Logout.php" class="nav-link"><i style="font-size: 1.5rem;" class="bi bi-box-arrow-right"></i></a>
                       </li>
                     <?php } ?>
                   

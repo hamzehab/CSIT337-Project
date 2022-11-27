@@ -12,20 +12,6 @@ CREATE TABLE customers (
   UNIQUE INDEX emailAddress (emailAddress)
 );
 
-CREATE TABLE addresses (
-  addressID         INT            NOT NULL   AUTO_INCREMENT,
-  customerID        INT            NOT NULL,
-  line1             VARCHAR(60)    NOT NULL,
-  line2             VARCHAR(60)               DEFAULT NULL,
-  city              VARCHAR(40)    NOT NULL,
-  state             VARCHAR(2)     NOT NULL,
-  zipCode           VARCHAR(10)    NOT NULL,
-  phone             VARCHAR(12)    NOT NULL,
-  disabled          TINYINT(1)     NOT NULL   DEFAULT 0,
-  PRIMARY KEY (addressID),
-  INDEX customerID (customerID)
-);
-
 CREATE TABLE orders (
   orderID           INT            NOT NULL   AUTO_INCREMENT,
   customerID        INT            NOT NULL,
@@ -33,6 +19,7 @@ CREATE TABLE orders (
   taxAmount         DECIMAL(10,2)  NOT NULL,
   totalPrice        DECIMAL(10,2)  NOT NULL, 
   shipAddress       VARCHAR(255)   NOT NULL,
+  shipStatus        TINYINT(1)     NOT NULL,
   PRIMARY KEY (orderID), 
   INDEX customerID (customerID)
 );
