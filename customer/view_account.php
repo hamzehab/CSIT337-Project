@@ -104,6 +104,12 @@
                 <?php
                     $count = 0; 
                     $orders = displayOrders($_SESSION['customerID']);
+                    if ($orders == NULL){ ?>
+                        <div class="m-5">
+                            <p>No Orders</p>
+                        </div>
+                    <?php }
+
                     foreach ($orders as $order):
                         $orderItems = displayOrderItems($order['orderID']);
                 ?>
