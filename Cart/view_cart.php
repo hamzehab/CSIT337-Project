@@ -14,11 +14,11 @@
             document.getElementById("desc").click();
         }    
     </script>
-    <body>
+    <body style="background-color: lightgrey;">
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
-              <i style="color:white; font-size: 3rem;" class="bi bi-cup-straw"></i>&nbsp; &nbsp;
+              <img style="width: 3%;" src="../images/logo.png" alt="Company Logo">&nbsp; &nbsp;
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
               </button>
@@ -65,7 +65,7 @@
           </nav>
         </header>
         <title>Cart</title>
-        <section class="h-100 h-custom" style="background-color: lightgrey;">
+        <section class="text-center">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                 <div class="col-12">
@@ -157,7 +157,7 @@
                             <?php $count++; endforeach; } ?>
 
                             <div class="pt-5">
-                                <h6 class="mb-0"><a href="../index.php" class="text-body"><i class="bi bi-arrow-left me-1"></i>Continue Shopping</a></h6>
+                                <h6 class="mb-0 float-start"><a href="../index.php" class="text-body"><i class="bi bi-arrow-left me-1"></i>Continue Shopping</a></h6>
                             </div>
                             </div>
                         </div>

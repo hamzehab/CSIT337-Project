@@ -17,7 +17,7 @@
         </script>
         <title>Category Manager</title>
         <div class="container text-center p-3">
-            <h1 class="pb-5">Products</h1>
+            <h1 class="pb-5">Categories</h1>
             <table class="table table-bordered">
                 <tr>
                     <th>categoryID</th>

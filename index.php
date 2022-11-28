@@ -9,6 +9,10 @@
 <html>
     <head>
         <style>
+            img{
+                width: 100%;
+
+            }
             .featured {
                 display: flex;
                 flex-direction: column;
@@ -34,45 +38,27 @@
     <body style="background-color: lightgrey;">
         <?php 
             if (!isset($search) || $search == ''){ ?>
-                <div class="container p-4">
-                    <div id="carouselExampleIndicators" class="carousel slide carousel-fade carousel-dark" data-bs-ride="true">
-                        <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                <div class="mt-3">
+                    <div class="row">
+                        <div class="col-sm mt-5">
+                            <img class='mt-5' src="./images/cocacolalogo.png" alt="Coca-Cola Logo">
                         </div>
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="d-flex justify-content-center">
-                                    <img src="./images/colaCh.png" class="d-inline" alt="...">
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="d-flex justify-content-center">
-                                    <img src="./images/colaChV.png" class="d-inline" alt="...">
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="d-flex justify-content-center">
-                                    <img src="..." class="d-inline" alt="...">
-                                </div>
-                            </div>
+                        <div class="col-sm">
+                            <img src="./images/redbulllogo.png" alt="Red Bull Logo">
                         </div>
-                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Previous</span>
-                        </button>
-                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="visually-hidden">Next</span>
-                        </button>
+                        <div class="col-sm mt-5">
+                            <img class='mt-5' src="./images/vitaminwaterlogo.png" alt="Red Bull Logo">
+                        </div>
+                        <div class="col-sm">
+                            <img class='mb-5' src="./images/lacroixlogo.png" alt="Red Bull Logo">
                         </div>
                     </div>
-                    <div class="bg-dark">
-                        <div class="bg-dark featured opacity-50">
-                            <h2 class="text-white">Available Products</h2>
-                        </div>
+                </div>
+                <div class="bg-dark">
+                    <div class="bg-dark featured opacity-50">
+                        <h2 class="text-white">Available Products</h2>
                     </div>
+                </div>
                     <?php display_search($products);} ?>
                 </div> 
     </body>

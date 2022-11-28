@@ -6,7 +6,7 @@
         $statement = $db->prepare($query);
         $statement->execute(array(
                             'customerID' => $customerID,
-                            'orderDate' => date("m-d-Y"),  
+                            'orderDate' => date("Y-m-d"),  
                             'taxAmount' => $taxAmount, 
                             'totalPrice' => $totalPrice, 
                             'shipAddress' => $shipAddress,
@@ -48,6 +48,17 @@
         return $orders;
     }
 
+    function displayAllOrders(){
+        global $db;
+        $query = 'SELECT * FROM orders';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $orders = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $orders;
+    }
+
     function displayOrderItems($orderID){
         global $db;
         $query = "SELECT * FROM orderitems WHERE orderID = :orderID";
@@ -57,5 +68,22 @@
         $statement->closeCursor();
 
         return $orderItems;
+    }
+
+    function deleteOrder($orderID, $customerID){
+        global $db;
+        $query = 'DELETE FROM orders WHERE orderID = :orderID AND customerID = :customerID';
+        $statement = $db->prepare($query);
+        $statement->execute(array('orderID' => $orderID, 'customerID' => $customerID));
+        $statement->closeCursor();
+    }
+
+    function editOrder($orderID, $shipAddress, $shipStatus){
+        global $db;
+        $query = 'UPDATE orders SET shipAddress = :shipAddress, shipStatus = :shipStatus
+                    WHERE orderID = :orderID';
+        $statement = $db->prepare($query);
+        $statement->execute(array('shipAddress' => $shipAddress, 'shipStatus' => $shipStatus, 'orderID' => $orderID));
+        $statement->closeCursor();
     }
 ?>

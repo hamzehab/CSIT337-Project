@@ -105,15 +105,15 @@
                     $count = 0; 
                     $orders = displayOrders($_SESSION['customerID']);
                     if ($orders == NULL){ ?>
-                        <div class="m-5">
-                            <p>No Orders</p>
+                        <div class="p-5 text-center">
+                            <h5>You have no orders</h5>
                         </div>
                     <?php }
 
                     foreach ($orders as $order):
                         $orderItems = displayOrderItems($order['orderID']);
                 ?>
-                        <p><a href="#" data-bs-toggle="modal" data-bs-target="#viewOrderModal<?php echo $count;?>">Order #<?php echo $order['orderID']; ?></a> placed on <?php echo $order['orderDate']; ?></p>
+                        <p class="mx-3 my-2"><a class="link-secondary" href="#" data-bs-toggle="modal" data-bs-target="#viewOrderModal<?php echo $count;?>">Order #<?php echo $order['orderID']; ?></a> placed on <?php echo $order['orderDate']; ?></p>
                         <div class="modal fade" id="viewOrderModal<?php echo $count;?>" tabindex="-1" aria-labelledby="viewOrderModallabel" aria-hidden="true">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">

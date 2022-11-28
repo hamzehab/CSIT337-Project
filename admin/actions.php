@@ -5,6 +5,8 @@
         require('../model/db_connect.php');
         require('../model/category_db.php');
         require('../model/product_db.php');
+        require('../model/order.php');
+        require('../model/account_db.php');
 
         $action = filter_input(INPUT_POST, 'action');
         switch ($action){
@@ -87,6 +89,66 @@
                     add_category($categoryName);
                     header('location: categoryManager.php');
                 }
+                break;
+
+            case 'deleteOrder':
+                $orderID = filter_input(INPUT_POST, 'orderID', FILTER_VALIDATE_INT);
+                $customerID = filter_input(INPUT_POST, 'customerID', FILTER_VALIDATE_INT);
+                if ($orderID == NULL || $orderID == FALSE || $customerID == NULL || $customerID == FALSE){
+                    $error_message = "Order Number and/or customerID not found.";
+                    include('../errors/database_error.php');
+                    echo "<div class='container text-center'><a class='btn btn-dark' href='./orderManager.php'>Go Back</a></div>";
+                }
+                else{
+                    deleteOrder($orderID, $customerID);
+                    header('location: orderManager.php');
+                }
+                break;
+
+            case 'editOrder':
+                $orderID = filter_input(INPUT_POST, 'orderID', FILTER_VALIDATE_INT);
+                $shipAddress = trim(htmlspecialchars(filter_input(INPUT_POST, 'shipAddress')));
+                $shipStatus = filter_input(INPUT_POST, 'shipStatus', FILTER_VALIDATE_INT);
+                if($shipAddress == NULL || $shipAddress == FALSE){
+                    $error_message = "Shipping Address cannot be found or cannot be empty.";
+                    include('../errors/database_error.php');
+                    echo "<div class='container text-center'><a class='btn btn-dark' href='./orderManager.php'>Go Back</a></div>";
+                }
+                else{
+                    editOrder($orderID, $shipAddress, $shipStatus);
+                    header('location: orderManager.php');
+                }
+                break;
+
+            case 'addAdmin':
+                $email = trim(htmlspecialchars(filter_input(INPUT_POST, 'email')));
+                $password = htmlspecialchars(filter_input(INPUT_POST, 'password'));
+                $firstName = trim(htmlspecialchars(filter_input(INPUT_POST, 'firstName')));
+                $lastName = trim(htmlspecialchars(filter_input(INPUT_POST, 'lastName')));
+                if ($email == NULL || $email == FALSE || $password == NULL || $password == FALSE
+                    || $firstName == NULL || $firstName == FALSE || $lastName == NULL || $lastName == FALSE){
+                    $error_message = "Missing Fields.";
+                    include('../errors/database_error.php');
+                    echo "<div class='container text-center'><a class='btn btn-dark' href='./orderManager.php'>Go Back</a></div>";
+                }
+                else{
+                    addAdmin($firstName, $lastName, $email, $password);
+                    header('location: userManager.php');
+                }
+                break;
+
+            case 'deleteUser':
+                $customerID = filter_input(INPUT_POST, 'customerID', FILTER_VALIDATE_INT);
+                if ($customerID == NULL || $customerID == FALSE){
+                    $error_message = "Customer cannot be deleted because customer was not found.";
+                    include('../errors/database_error.php');
+                    echo "<div class='container text-center'><a class='btn btn-dark' href='./userManager.php'>Go Back</a></div>";
+                }
+                else{
+                    deleteUser($customerID);
+                    header('location: userManager.php');
+                }
+                break;
 
         }
     }   

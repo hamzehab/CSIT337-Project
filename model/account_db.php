@@ -138,4 +138,43 @@
         $statement->execute(array('password' => password_hash($password, PASSWORD_DEFAULT), 'customerID' => $customerID));
         $statement->closeCursor();
     }
+
+    function grabUsers(){
+        global $db;
+        $query = 'SELECT * FROM customers';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $users = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $users;
+    }
+
+    function grabAdmins(){
+        global $db;
+        $query = 'SELECT * FROM administrators';
+        $statement = $db->prepare($query);
+        $statement->execute();
+        $admins = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $admins;
+    }
+
+    function addAdmin($firstName, $lastName, $email, $password){
+        global $db;
+        $query = 'INSERT INTO administrators (emailAddress, password, firstName, lastName)
+                    VALUES (:email, :password, :firstName, :lastName)';
+        $statement = $db->prepare($query);
+        $statement->execute(array('email' => $email, 'password' => password_hash($password, PASSWORD_DEFAULT), 'firstName' => $firstName, 'lastName' => $lastName));
+        $statement->closeCursor();
+    }
+
+    function deleteUser($customerID){
+        global $db;
+        $query = 'DELETE FROM customers WHERE customerID = :customerID';
+        $statement = $db->prepare($query);
+        $statement->execute(array('customerID' => $customerID));
+        $statement->closeCursor();
+    }
 ?>

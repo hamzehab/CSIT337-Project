@@ -71,13 +71,13 @@
                                                 <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label">Product Name:</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="productName" class="form-control" value="<?php echo $product['productName'];?>" required>
+                                                        <input type="text" name="productName" class="form-control" value="<?php echo $product['productName'];?>">
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
                                                     <label class="col-sm-2 col-form-label">Product Description:</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="description" class="form-control" value="<?php echo $product['description']; ?>" required></textarea>
+                                                        <input type="text" name="description" class="form-control" value="<?php echo $product['description']; ?>" required></input>
                                                     </div>
                                                 </div>
                                                 <div class="row mb-3">
@@ -130,7 +130,7 @@
             </table>
         </div>
         <!-- Button trigger modal -->
-        <div class="container">
+        <div class="container mb-5">
             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addModal">Add Product</button>
 
             <!-- Modal -->
@@ -173,7 +173,7 @@
                                 <div class="row mb-3">
                                     <label class="col-sm-2 col-form-label">Product Description:</label>
                                     <div class="col-sm-10">
-                                        <input type="text" name="description" class="form-control" required></textarea>
+                                        <input type="text" name="description" class="form-control" required></input>
                                     </div>
                                 </div>
                                 <div class="row mb-3">
