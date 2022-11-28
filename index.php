@@ -38,19 +38,19 @@
     <body style="background-color: lightgrey;">
         <?php 
             if (!isset($search) || $search == ''){ ?>
-                <div class="mt-3">
+                <div class="container mt-3">
                     <div class="row">
-                        <div class="col-sm mt-5">
-                            <img class='mt-5' src="./images/cocacolalogo.png" alt="Coca-Cola Logo">
+                        <div class="col-sm ">
+                            <img class='mt-3' src="./images/cocacolalogo.png" alt="Coca-Cola Logo">
                         </div>
                         <div class="col-sm">
                             <img src="./images/redbulllogo.png" alt="Red Bull Logo">
                         </div>
-                        <div class="col-sm mt-5">
-                            <img class='mt-5' src="./images/vitaminwaterlogo.png" alt="Red Bull Logo">
+                        <div class="col-sm">
+                            <img class='mt-4' src="./images/vitaminwaterlogo.png" alt="Red Bull Logo">
                         </div>
                         <div class="col-sm">
-                            <img class='mb-5' src="./images/lacroixlogo.png" alt="Red Bull Logo">
+                            <img class='' src="./images/lacroixlogo.png" alt="Red Bull Logo">
                         </div>
                     </div>
                 </div>
