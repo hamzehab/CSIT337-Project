@@ -86,8 +86,16 @@
                     echo "<div class='container text-center'><a class='btn btn-dark' href='./categoryManager.php'>Go Back</a></div>";
                 }
                 else{
-                    add_category($categoryName);
-                    header('location: categoryManager.php');
+                    $name = getCategoryName($categoryName);
+                    if ($name == NULL || $name == FALSE){
+                        add_category($categoryName);
+                        header('location: categoryManager.php');
+                    }
+                    else{
+                        $error_message = "Category name is missing from field box";
+                        include('../errors/database_error.php');
+                        echo "<div class='container text-center'><a class='btn btn-dark' href='./categoryManager.php'>Go Back</a></div>";
+                    }
                 }
                 break;
 

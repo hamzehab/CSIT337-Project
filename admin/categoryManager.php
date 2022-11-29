@@ -73,7 +73,7 @@
             </table>
         </div>
         <!-- Button trigger modal -->
-        <div class="container">
+        <div class="container mb-5">
             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#addModal">Add Category</button>
 
             <!-- Modal -->

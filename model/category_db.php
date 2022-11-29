@@ -37,4 +37,15 @@
         $statement->execute(array('categoryName' => $categoryName, 'category_id' => $category_id));
         $statement->closeCursor();
     }
+
+    function getCategoryName($categoryName){
+        global $db;
+        $query = "SELECT * FROM categories WHERE categoryName = :categoryName";
+        $statement = $db->prepare($query);
+        $statement->execute(array('categoryName' => $categoryName));
+        $name = $statement->fetchAll();
+        $statement->closeCursor();
+
+        return $name;
+    }
 ?>

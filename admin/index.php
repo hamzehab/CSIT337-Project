@@ -42,7 +42,7 @@
             </div>
         </div>
         
-        <div class="container text-center mt-5">
+        <div class="container text-center my-5">
             <div class="row p-5 bg-dark rounded-5">
                 <div class="col pt-5">
                     <img class="rounded-5" src="../images/productManager.png" alt="Product Manager">
