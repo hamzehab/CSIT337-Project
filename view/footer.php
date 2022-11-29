@@ -6,10 +6,13 @@
             <div class="container p-4">
                 <!--Grid row-->
                 <div class="row mt-4">
-                    <h5 class="mb-4">About UnlimitedDrinks</h5>
+                    <h5 class="mb-4">About Unlimited Drinks</h5>
                     <p>
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                        voluptatum deleniti atque corrupti.
+                    “UNLIMITED DRINKS” is a beverage company that provides convenience and pleasure on the go. 
+                    We provide a variety of drinks for our customers to choose from. We work hard to fulfill our customers 
+                    and receive a one-hundred percent satisfaction rate on Google. Our mission is to provide our customers with 
+                    a refreshing beverage in bulk or by quantity. We began our journey during the pandemic in the year 2020 and 
+                    we are still striving/pushing to provide our customers with the best service.  
                     </p>
                 </div>
             </div>

@@ -39,8 +39,25 @@
         <?php 
             if (!isset($search) || $search == ''){ ?>
                 <div class="container mt-3">
-                    <div class="row">
-                        <div class="col-sm ">
+                    <div class="text-center pt-5">
+                        <h2>Welcome to Unlimited Drinks!</h2>
+                        <h5 style="font-weight: normal;">
+                            Where we have a variety of beverages that are offered in bulk or separately. <br>
+                            Browse through our many options that we have listed on the website. Brand names <br>
+                            such as Coca-Cola, Sprite, Celsius, Monster, etc. 
+                        </h5>
+                    </div>
+                </div>
+                <img class="rounded mx-auto d-block" style="width: 30%;" src="./images/logo.png" alt="">
+
+                <div class="bg-dark">
+                    <div class="bg-dark featured opacity-50">
+                        <h2 class="text-white">Available Products</h2>
+                    </div>
+                </div>
+                <div class="container mt-3">
+                    <div class="row mt-5">
+                        <div class="col-sm">
                             <img class='mt-3' src="./images/cocacolalogo.png" alt="Coca-Cola Logo">
                         </div>
                         <div class="col-sm">
@@ -52,11 +69,6 @@
                         <div class="col-sm">
                             <img class='' src="./images/lacroixlogo.png" alt="Red Bull Logo">
                         </div>
-                    </div>
-                </div>
-                <div class="bg-dark">
-                    <div class="bg-dark featured opacity-50">
-                        <h2 class="text-white">Available Products</h2>
                     </div>
                 </div>
                     <?php display_search($products);} ?>

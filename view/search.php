@@ -12,11 +12,11 @@
         <title>
             <?php 
                 if($search != ''){
-                    echo "UnlimitedDrinks: $search";
+                    echo "Unlimited Drinks: $search";
                 }
                 else {
-                    if(isset($category_name)) echo "UnlimitedDrinks: $category_name";
-                    else echo 'UnlimitedDrinks';
+                    if(isset($category_name)) echo "Unlimited Drinks: $category_name";
+                    else echo 'Unlimited Drinks';
                 }
             ?>
         </title>
