@@ -71,9 +71,15 @@
                     include('../errors/database_error.php');
                     echo "<div class='container text-center'><a class='btn btn-dark' href='./categoryManager.php'>Go Back</a></div>";
                 }
-                else{
+                $name = getCategoryName($categoryName);
+                if ($name == NULL || $name == FALSE){
                     edit_category($category_id, $categoryName);
                     header('location: categoryManager.php');
+                }
+                else{
+                    $error_message = "Category name cannot be duplicate";
+                    include('../errors/database_error.php');
+                    echo "<div class='container text-center'><a class='btn btn-dark' href='./categoryManager.php'>Go Back</a></div>";
                 }
 
                 break;
