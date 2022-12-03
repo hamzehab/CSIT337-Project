@@ -1,12 +1,13 @@
 <?php 
     function place_order($customerID, $taxAmount, $totalPrice, $shipAddress){
         global $db;
+        date_default_timezone_set('EST');
         $query = "INSERT INTO orders (customerID, orderDate, taxAmount, totalPrice, shipAddress, shipStatus)
                     VALUES (:customerID, :orderDate, :taxAmount, :totalPrice, :shipAddress, :shipStatus)";
         $statement = $db->prepare($query);
         $statement->execute(array(
                             'customerID' => $customerID,
-                            'orderDate' => date("Y-m-d"),  
+                            'orderDate' => date("D M j, g:i a"),  
                             'taxAmount' => $taxAmount, 
                             'totalPrice' => $totalPrice, 
                             'shipAddress' => $shipAddress,

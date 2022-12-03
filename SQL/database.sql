@@ -15,7 +15,7 @@ CREATE TABLE customers (
 CREATE TABLE orders (
   orderID           INT            NOT NULL   AUTO_INCREMENT,
   customerID        INT            NOT NULL,
-  orderDate         DATE           NOT NULL,
+  orderDate         VARCHAR(60)    NOT NULL,
   taxAmount         DECIMAL(10,2)  NOT NULL,
   totalPrice        DECIMAL(10,2)  NOT NULL, 
   shipAddress       VARCHAR(255)   NOT NULL,
