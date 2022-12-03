@@ -86,11 +86,9 @@
                             VALUES (:email, :password, :fName, :lName)";
                 $statement = $db->prepare($query);
                 $statement->execute(array('email' => $email, 'password' => $hash, 'fName' => $fName, 'lName' => $lName));
-                $user = $statement->fetch();
                 $statement->closeCursor();
 
-                $_SESSION['email'] = $email;
-                $_SESSION['customerID'] = $user['customerID'];
+                login_customer($email, $password);
                 header('location: ../index.php');
             }
         }

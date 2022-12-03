@@ -81,8 +81,8 @@
                                         if(!isset($_SESSION['cart'])) echo "No items in cart";
                                         else {
                                             $items = count($_SESSION['cart']);
-                                            if($items == 1) echo $items . " item"; 
-                                            else echo $items . " items";
+                                            $ending = ($items==1) ? " item" : " items"; 
+                                            echo "$items $ending";
                                         }
                                     ?>
                                 </h6>
@@ -175,9 +175,8 @@
                                         foreach ($_SESSION['cart'] as $product):
                                             $numOfItems += $product['quantity'];
                                         endforeach;
-                                        echo $numOfItems;
-                                        if($numOfItems == 1) echo " item";
-                                        else echo " items";
+                                        $ending = ($numOfItems==1) ? " item" : " items"; 
+                                        echo "$numOfItems $ending";
                                     }
                                     else echo "0 items";
                                     ?>
