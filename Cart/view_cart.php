@@ -186,14 +186,14 @@
 
                             <div class="d-flex justify-content-between mb-5">
                                 <h5>Sales Tax</h5>
-                                <h5>$ <?php $tax = $total * .07; echo number_format($tax, 2, '.', ' '); ?></h5>
+                                <h5>$ <?php $tax = round($total * .07, 2); echo number_format($tax, 2, '.', ' '); ?></h5>
                             </div>
 
                             <hr class="my-4">
 
                             <div class="d-flex justify-content-between mb-5">
                                 <h5>Total Price</h5>
-                                <h5>$ <?php $total *= 1.07; echo number_format($total, 2, '.', ' '); ?></h5>
+                                <h5>$ <?php $total = round($total*1.07, 2); echo number_format($total, 2, '.', ' '); ?></h5>
                             </div>
                             </div>
                         </div>

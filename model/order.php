@@ -7,7 +7,7 @@
         $statement = $db->prepare($query);
         $statement->execute(array(
                             'customerID' => $customerID,
-                            'orderDate' => date("D M j, g:i a"),  
+                            'orderDate' => date("l, F jS, Y \a\\t g:i A T"),  
                             'taxAmount' => $taxAmount, 
                             'totalPrice' => $totalPrice, 
                             'shipAddress' => $shipAddress,
